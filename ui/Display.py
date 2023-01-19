@@ -11,6 +11,7 @@ class Display(tkinter.Tk):
 
         self.canvas = tkinter.Canvas(self, width=0, height=0, bg='#222', bd=0, highlightthickness=0, relief='ridge')
         self.canvas.pack(expand=tkinter.YES, fill=tkinter.BOTH)
+        #self.resizable(False, False)
 
     # Update the window
     def update(self):

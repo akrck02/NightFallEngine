@@ -1,1 +1,1 @@
-python ./src/Game.py
+python ./Game.py

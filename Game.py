@@ -51,16 +51,17 @@ class GameEngine:
 
             # Update
             self.scene.update(delta)
-            updates += 1
+            self.input.detect()
 
-            if math.trunc(lastSecond) == 1:
+            if math.trunc(lastSecond) <= 1:
                 self.debug.setUps(updates)
                 updates = 0
                 lastSecond = 0;
-
+          
             # sleep thread
             time.sleep(self.updateTime)
             lastSecond += self.updateTime
+            updates += 1
 
     def draw(self):
 
@@ -77,9 +78,8 @@ class GameEngine:
             self.display.draw()
             self.display.title(WINDOW_TITLE + " " + str(self.debug.fps) + " FPS / " + str(self.debug.ups) + " UPS")
             self.scene.draw(self.display)
-            frames += 1
-
-            if math.trunc(lastSecond) == 1:
+            
+            if math.trunc(lastSecond) <= 1:
                 self.debug.setFps(frames)
                 frames = 0
                 lastSecond = 0
@@ -87,6 +87,7 @@ class GameEngine:
             # sleep thread
             time.sleep(self.frameTime)
             lastSecond += self.frameTime
+            frames += 1
 
 
 game = GameEngine()
